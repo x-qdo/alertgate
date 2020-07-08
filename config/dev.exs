@@ -2,9 +2,9 @@ use Mix.Config
 
 # Configure your database
 config :alertgate, Alertgate.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "alertgate_dev",
+  username: "root",
+  password: "root",
+  database: "qdops",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
