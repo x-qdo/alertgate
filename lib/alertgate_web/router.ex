@@ -20,9 +20,11 @@ defmodule AlertgateWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", AlertgateWeb do
-  #   pipe_through :api
-  # end
+   scope "/api", AlertgateWeb do
+     pipe_through :api
+
+     post "/alerts/:source", AlertsController, :create
+   end
 
   # Enables LiveDashboard only for development
   #

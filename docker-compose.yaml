@@ -14,5 +14,15 @@ services:
     ports:
       - 5432:5432
 
+  rabbitmq:
+    image: library/rabbitmq:3-management-alpine
+    restart: always
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+
 volumes:
   postgres-data:
+  rabbitmq:

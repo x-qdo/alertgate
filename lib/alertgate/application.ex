@@ -6,17 +6,20 @@ defmodule Alertgate.Application do
   use Application
 
   def start(_type, _args) do
+    import Supervisor.Spec, warn: false
     children = [
       # Start the Ecto repository
-      Alertgate.Repo,
+      #Alertgate.Repo,
       # Start the Telemetry supervisor
       AlertgateWeb.Telemetry,
       # Start the PubSub system
       {Phoenix.PubSub, name: Alertgate.PubSub},
       # Start the Endpoint (http/https)
-      AlertgateWeb.Endpoint
+      AlertgateWeb.Endpoint,
       # Start a worker by calling: Alertgate.Worker.start_link(arg)
       # {Alertgate.Worker, arg}
+      # worker(Alertgate.Publisher, []),
+      {Alertgate.Publisher, []}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
